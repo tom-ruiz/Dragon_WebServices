@@ -1,6 +1,5 @@
 {
   "name": "client",
-  "proxy": "http://141.95.153.155/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

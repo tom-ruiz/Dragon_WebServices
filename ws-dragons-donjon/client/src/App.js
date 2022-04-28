@@ -3,11 +3,13 @@ import './App.css';
 const axios = require('axios');
 
 function App() {
-  let url = 'http://141.95.153.155/';
-  const baseConfig = {
+  let url = 'http://localhost:8080/api';
+  let baseConfig = {
     method: 'GET',
     headers: {
-      'Access-Control-Allow-Origin' : '*'
+      "Access-Control-Allow-Headers" : "Content-Type",
+            "Access-Control-Allow-Origin": "https://www.example.com",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
     },
     responseType: "json",
     url: url
@@ -15,7 +17,6 @@ function App() {
   const makeAPICall = async () => {
     axios(baseConfig)
       .then((function(reponse){
-        reponse.header("Access-Control-Allow-Origin", "*");
         console.log(reponse.data)
       }))
   }
