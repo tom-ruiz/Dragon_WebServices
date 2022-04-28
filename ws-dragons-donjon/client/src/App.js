@@ -5,12 +5,11 @@ import SearchBar from './components/Searchbar';
 const axios = require('axios');
 
 function App() {
-  let url = 'http://localhost:8080/api';
+  const url = 'http://localhost:8080/';
   let baseConfig = {
     method: 'GET',
     headers: {
       "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Origin": "https://www.example.com",
       "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
     },
     responseType: "json",
@@ -38,7 +37,12 @@ function App() {
     console.log(event.target.value);
 }
   const sendRequest = () => {
-    console.log('requete lancée')
+    console.log('requete lancée');
+    baseConfig.method = requestType;
+    console.log(baseConfig.method);
+    baseConfig.url = requestURL;
+    console.log(baseConfig);
+    makeAPICall();
   }
 
   return (

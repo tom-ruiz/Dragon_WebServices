@@ -6,8 +6,8 @@ export default function SearchBar({requestURL, handleURLChange, requestType, han
         <>
             <label for="pet-select">Type de requete:</label>
 
-            <select value={requestType} onChange={handleRequestType} name="requestType">
-                <option value="GET">GET</option>
+            <select value={requestType} onChange={handleRequestType} defaultValue={"GET"} name="requestType">
+                <option  value="GET">GET</option>
                 <option value="POST">POST</option>
                 <option value="PUT">PUT</option>
                 <option value="DELETE">DELETE</option>
