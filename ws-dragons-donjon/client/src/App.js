@@ -35,7 +35,8 @@ function App() {
       <h1>React Axios fecth</h1>
       <SearchBar
         requestURL={requestURL}
-        onURLChange={handleURLChange}/>
+        handleURLChange={handleURLChange}
+        />
         {requestURL}
       <Table/>
     </div>
