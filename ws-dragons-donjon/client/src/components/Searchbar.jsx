@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
 
-export default function SearchBar() {
-
-    const [requestURL, setRequestURL] = useState("");
+export default function SearchBar({requestURL, handleURLChange}) {
+    console.log("requestURL :" +  requestURL);
     const [requestType, setRequestType] = useState("");
-    const handleURLChange = (event) => {
-        setRequestURL(event.target.value)
-    }
+
     const handleRequest = () => {
         console.log('requete lancée')
     }

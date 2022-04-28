@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Table from './components/Table';
 import SearchBar from './components/Searchbar';
@@ -25,10 +25,18 @@ function App() {
   useEffect(() => {
     makeAPICall();
   }, [])
+
+  const [requestURL, setRequestURL] = useState("ok");
+  const handleURLChange = (event) => {
+    setRequestURL(event.target.value)
+}
   return (
     <div className="App">
       <h1>React Axios fecth</h1>
-      <SearchBar/>
+      <SearchBar
+        requestURL={requestURL}
+        onURLChange={handleURLChange}/>
+        {requestURL}
       <Table/>
     </div>
   );
