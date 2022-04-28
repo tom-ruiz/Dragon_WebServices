@@ -13,9 +13,9 @@ export default function Table() {
                     <td>Description</td>
                 </tr>
                 <tr>
-                    <td>key1</td>
-                    <td>value1</td>
-                    <td>desc1</td>
+                    <td><input type="text" placeholder='key'/></td>
+                    <td><input type="text" placeholder='value'/></td>
+                    <td><input type="text" placeholder='value'/></td>
                 </tr>
 
             </table>

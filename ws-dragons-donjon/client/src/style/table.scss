@@ -6,9 +6,15 @@
         td {
             border: 1px solid black;
             width: calc(100% / 3);
+
+            input {
+                width: 95%;
+            }
         }
     }
-    &-head{
+
+    &-head {
         font-weight: bold;
+        background-color: #9cb3d6;
     }
 }
