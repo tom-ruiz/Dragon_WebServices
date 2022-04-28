@@ -52,7 +52,6 @@ function App() {
         handleRequestType={handleRequestType}
         sendRequest={sendRequest}
       />
-      {requestURL}
       <Table />
     </div>
   );
