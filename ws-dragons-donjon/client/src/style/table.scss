@@ -1,0 +1,14 @@
+.table {
+    &-main {
+        border-collapse: collapse;
+        width: 100%;
+
+        td {
+            border: 1px solid black;
+            width: calc(100% / 3);
+        }
+    }
+    &-head{
+        font-weight: bold;
+    }
+}
