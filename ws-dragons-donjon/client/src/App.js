@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Table from './components/Table';
+import Body from './components/Body';
+import Response from './components/Response';
 import SearchBar from './components/Searchbar';
 const axios = require('axios');
 
@@ -41,6 +42,13 @@ function App() {
     console.log('requete lancée')
   }
 
+  const [bodyContent, setBodyContent] = useState('')
+  const handleChangeContent = (event) => {
+      setBodyContent(event.target.value)
+  }
+
+  const [response, setResponse] = useState("")
+
   return (
     <div className="App">
       <h1>React Axios fecth</h1>
@@ -53,7 +61,12 @@ function App() {
         sendRequest={sendRequest}
       />
       {requestURL}
-      <Table />
+      <Body 
+        bodyContent={bodyContent}
+        handleChangeContent={handleChangeContent}
+      />
+      <Response
+        response={response}/>
     </div>
   );
 }

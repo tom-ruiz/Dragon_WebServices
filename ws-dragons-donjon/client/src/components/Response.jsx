@@ -1,11 +1,11 @@
 import React from 'react'
 
-export default function Response() {
+export default function Response({response}) {
     return (
         <><div>Response</div><div>
             <pre>
-
-            </pre>
+                {JSON.stringify(response,null,2)}
+            </pre> 
         </div></>
     )
 }
