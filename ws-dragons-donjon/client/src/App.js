@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import './App.css';
+import SearchBar from './components/Searchbar';
 const axios = require('axios');
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
   return (
     <div className="App">
       <h1>React Axios fecth</h1>
+      <SearchBar/>
     </div>
   );
 }
