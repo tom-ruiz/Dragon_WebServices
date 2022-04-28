@@ -9,16 +9,16 @@ function App() {
   let baseConfig = {
     method: 'GET',
     headers: {
-      "Access-Control-Allow-Headers" : "Content-Type",
-            "Access-Control-Allow-Origin": "https://www.example.com",
-            "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Origin": "https://www.example.com",
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
     },
     responseType: "json",
     url: url
   };
   const makeAPICall = async () => {
     axios(baseConfig)
-      .then((function(reponse){
+      .then((function (reponse) {
         console.log(reponse.data)
       }))
   }
@@ -29,16 +29,31 @@ function App() {
   const [requestURL, setRequestURL] = useState("ok");
   const handleURLChange = (event) => {
     setRequestURL(event.target.value)
+  }
+
+  const [requestType, setRequestType] = useState("");
+
+  const handleRequestType = (event) => {
+    setRequestType(event.target.value)
+    console.log(event.target.value);
 }
+  const sendRequest = () => {
+    console.log('requete lancée')
+  }
+
   return (
     <div className="App">
       <h1>React Axios fecth</h1>
       <SearchBar
         requestURL={requestURL}
         handleURLChange={handleURLChange}
-        />
-        {requestURL}
-      <Table/>
+
+        requestType={requestType}
+        handleRequestType={handleRequestType}
+        sendRequest={sendRequest}
+      />
+      {requestURL}
+      <Table />
     </div>
   );
 }

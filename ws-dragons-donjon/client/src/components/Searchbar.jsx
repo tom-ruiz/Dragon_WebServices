@@ -1,16 +1,7 @@
 import React, { useState } from 'react'
 
-export default function SearchBar({requestURL, handleURLChange}) {
-    console.log("requestURL :" +  requestURL);
-    const [requestType, setRequestType] = useState("");
+export default function SearchBar({requestURL, handleURLChange, requestType, handleRequestType, sendRequest}) {    
 
-    const handleRequest = () => {
-        console.log('requete lancée')
-    }
-    const handleRequestType = (event) => {
-        setRequestType(event.target.value)
-        console.log(event.target.value);
-    }
     return (
         <>
             <label for="pet-select">Type de requete:</label>
@@ -26,7 +17,7 @@ export default function SearchBar({requestURL, handleURLChange}) {
             <div>
                 {requestURL}
             </div>
-            <button onClick={handleRequest} >
+            <button onClick={sendRequest} >
                 valider la requete
             </button>
         </>
