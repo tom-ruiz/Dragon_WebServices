@@ -13,7 +13,8 @@ function App() {
       "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
     },
     responseType: "json",
-    url: url
+    url: url,
+    body: ''
   };
   const makeAPICall = async () => {
     axios(baseConfig)
@@ -35,13 +36,22 @@ function App() {
   const handleRequestType = (event) => {
     setRequestType(event.target.value)
     console.log(event.target.value);
-}
+  }
+
+  const [requestBody, setBodyContent] = useState("");
+
+  const handleBodyContent = (event) => {
+    setBodyContent(event.target.value)
+    console.log(event.target.value);
+  }
+
   const sendRequest = () => {
     console.log('requete lancée');
     baseConfig.method = requestType;
     console.log(baseConfig.method);
     baseConfig.url = requestURL;
     console.log(baseConfig);
+    baseConfig.body = requestBody;
     makeAPICall();
   }
 
@@ -54,9 +64,12 @@ function App() {
 
         requestType={requestType}
         handleRequestType={handleRequestType}
+
+        requestBody={requestBody}
+        handleBodyContent={handleBodyContent}
+
         sendRequest={sendRequest}
       />
-      {requestURL}
       <Table />
     </div>
   );

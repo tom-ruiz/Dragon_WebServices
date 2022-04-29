@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function SearchBar({requestURL, handleURLChange, requestType, handleRequestType, sendRequest}) {    
+export default function SearchBar({requestURL, handleURLChange, requestType, handleRequestType, sendRequest, handleBodyContent, bodyContent}) {    
 
     return (
         <>
@@ -17,6 +17,7 @@ export default function SearchBar({requestURL, handleURLChange, requestType, han
             <div>
                 {requestURL}
             </div>
+            <textarea name="body" cols="40" rows="5" value={bodyContent} onChange={handleBodyContent}></textarea>
             <button onClick={sendRequest} >
                 valider la requete
             </button>
