@@ -6,7 +6,7 @@ import Response from './components/Response';
 const axios = require('axios');
 
 function App() {
-  const url = 'http://localhost:8080/';
+  const url = 'http://localhost:8080';
   let baseConfig = {
     method: 'GET',
     headers: {
@@ -15,7 +15,7 @@ function App() {
     },
     responseType: "json",
     url: url,
-    body: ''
+    body: '',
   };
   const makeAPICall = async () => {
     axios(baseConfig)
@@ -63,12 +63,20 @@ function App() {
 
   const sendRequest = () => {
     console.log('requete lancée');
-    baseConfig.method = requestType;
+    if(requestType !== ""){
+      baseConfig.method = requestType;
+    }
     console.log(baseConfig.method);
-    baseConfig.url = requestURL;
+    if(requestURL !== ""){
+      baseConfig.url = requestURL;
+    }
     console.log(baseConfig);
-    baseConfig.body = requestBody;
-    baseConfig.headers = baseConfig.headers + "," + requestHeaderName + " : " + requestHeaderValue
+    if(requestBody !== ""){
+      baseConfig.body = requestBody;
+    }
+    if(requestHeaderName !== "" || requestHeaderValue !== "" ){
+      baseConfig.headers = baseConfig.headers + "," + requestHeaderName + " : " + requestHeaderValue
+    }
     makeAPICall();
   }
 
