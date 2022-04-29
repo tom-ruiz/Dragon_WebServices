@@ -6,7 +6,7 @@ export default function Response({ response }) {
             for (var [cle, valeur] of Object.entries(response)) {
                 return (
                     <>
-                        <div>Response</div><div>
+                        <div>Voici la réponse généré par votre requête :</div><div>
                             <pre>
                                 {JSON.stringify(response.presentation, null, 2)}
 
@@ -19,6 +19,7 @@ export default function Response({ response }) {
                                 </ul>
                             </pre>
                         </div>
+                        <div>Une erreur ? Tu vois bien le code de retour non? Il doit bien y avoir un autre message quelque part...</div>
 
                     </>
                 )
@@ -26,11 +27,12 @@ export default function Response({ response }) {
         } else {
             return (
                 <>
-                    <div>Response</div><div>
+                    <div>Voici la réponse généré par votre requête :</div><div>
                         <pre>
                             {JSON.stringify(response, null, 2)}
                         </pre>
                     </div>
+                    <div>Une erreur ? Tu vois bien le code de retour non? Il doit bien y avoir un autre message quelque part...</div>
                 </>
             )
         }
