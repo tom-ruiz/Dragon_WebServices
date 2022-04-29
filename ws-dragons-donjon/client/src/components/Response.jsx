@@ -7,24 +7,26 @@ export default function Response({response}) {
                 console.log(cle + ' ' + valeur);
                 return(
                     <>
-                    <div>Response</div><div>
+                    <div>Voici la réponse généré par votre requête :</div><div>
                         <pre>
                             <div>
                                 <p>{valeur}</p>
                             </div>
                         </pre> 
                     </div>
+                    <div>Une erreur ? Tu vois bien le code de retour non? Il doit bien y avoir un autre message quelque part...</div>
                     </>
                 )
               }
         }else{
             return (
                 <>
-                    <div>Response</div><div>
+                    <div>Voici la réponse généré par votre requête :</div><div>
                         <pre>
                             {JSON.stringify(response,null,2)}
                         </pre> 
                     </div>
+                    <div>Une erreur ? Tu vois bien le code de retour non? Il doit bien y avoir un autre message quelque part...</div>
                 </>
             )
         }

@@ -108,7 +108,11 @@ function App() {
 
   return (
     <div className="App">
-      <h1>React Axios fecth</h1>
+      <h1>Bienvenue dans notre donjon !</h1>
+      <Response
+        response={lastResponse}/>
+      <div class="barre"></div>
+      <p>La barre ci-dessous vous permet de requêter l'api et explorer le donjon !</p>
       <SearchBar
         requestURL={requestURL}
         handleURLChange={handleURLChange}
@@ -129,9 +133,6 @@ function App() {
       />
       <hr/>
         <Table />
-      <Response
-        response={lastResponse}/>
-        <hr/>
 
     </div>
   );
