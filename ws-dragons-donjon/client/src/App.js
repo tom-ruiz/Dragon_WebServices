@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Table from './components/Table';
-import SearchBar from './components/Searchbar';
+import Body from './components/Body';
+import Headers from './components/Headers';
 import Response from './components/Response';
+import SearchBar from './components/Searchbar';
+import Table from './components/Table';
 const axios = require('axios');
 
 function App() {
@@ -20,9 +22,15 @@ function App() {
   const makeAPICall = async () => {
     axios(baseConfig)
       .then((function (reponse) {
-        console.log(reponse.data)
-        //envoyer les infos au composant "response.jsx"
+        console.log("responseData",reponse.data)
+        setLastResponse(reponse.data)
+        console.log("resp",lastResponse);
       }))
+      .then((reponse) => {
+        setLastResponse(reponse.data)
+        console.log("resp",lastResponse);
+      })
+      
   }
   useEffect(() => {
     makeAPICall();
@@ -80,6 +88,19 @@ function App() {
     makeAPICall();
   }
 
+  const handleChangeContent = (event) => {
+      setBodyContent(event.target.value)
+  }
+
+  const [params, setParams] = useState({})
+  const [headers, setHeaders] = useState([{headerKey : 'test', headerValue: 'test2'}])
+  const handleHeadersChange = e => {
+    // let newArr = [...headers]
+    // newArr[index] = e.target.value
+    // setHeaders(newArr)
+  }
+  const [lastResponse, setLastResponse] = useState("1")
+
   return (
     <div className="App">
       <h1>React Axios fecth</h1>
@@ -101,8 +122,12 @@ function App() {
 
         sendRequest={sendRequest}
       />
-      <Table />
-      <Response/>
+      <hr/>
+        <Table />
+      <Response
+        response={lastResponse}/>
+        <hr/>
+
     </div>
   );
 }

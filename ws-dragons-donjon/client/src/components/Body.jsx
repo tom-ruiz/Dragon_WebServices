@@ -1,17 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function Body() {
-    // const handleChangeContent = (event) => {
-    //     setBodyContent(event.target.value)
-    // }
-    // return (
-    //     <div>
+export default function Body({bodyContent, handleChangeContent}) {
 
-    //         <div>
-    //             Body
-    //         </div>
-    //         <textarea name="body" cols="40" rows="5" value={bodyContent} onChange={handleChangeContent}></textarea>
-    //         {bodyContent}
-    //     </div>
-    // )
+    return (
+        <div>
+
+            <div>
+                Body
+            </div>
+            <textarea name="body" cols="40" rows="5" value={bodyContent} onChange={handleChangeContent}></textarea>
+            {bodyContent}
+        </div>
+    )
 }
