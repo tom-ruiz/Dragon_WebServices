@@ -6,7 +6,7 @@ import Response from './components/Response';
 const axios = require('axios');
 
 function App() {
-  const url = 'http://localhost';
+  const url = 'http://localhost:8080';
   let baseConfig = {
     method: 'GET',
     headers: {
@@ -14,7 +14,8 @@ function App() {
       "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
     },
     responseType: "json",
-    body: '',
+    url: url,
+    body: ''
   };
   const makeAPICall = async () => {
     axios(baseConfig)
