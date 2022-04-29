@@ -33,7 +33,7 @@ app.get('/inscription', (req, res) => {
     })
     .catch(function (error) {
       console.log(error);
-      res.send(response.data);
+      res.send(error);
     })
 })
 

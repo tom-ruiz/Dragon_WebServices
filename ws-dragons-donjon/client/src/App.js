@@ -10,7 +10,7 @@ function App() {
     method: 'GET',
     headers: {
       "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
     },
     responseType: "json",
     url: url,
@@ -45,6 +45,20 @@ function App() {
     console.log(event.target.value);
   }
 
+  const [requestHeaderName, setHeaderName] = useState("");
+
+  const handleHeaderName = (event) => {
+    setHeaderName(event.target.value)
+    console.log(event.target.value);
+  }
+
+  const [requestHeaderValue, setHeaderValue] = useState("");
+
+  const handleHeaderValue = (event) => {
+    setHeaderValue(event.target.value)
+    console.log(event.target.value);
+  }
+
   const sendRequest = () => {
     console.log('requete lancée');
     baseConfig.method = requestType;
@@ -52,6 +66,7 @@ function App() {
     baseConfig.url = requestURL;
     console.log(baseConfig);
     baseConfig.body = requestBody;
+    baseConfig.headers = baseConfig.headers + "," + requestHeaderName + " : " + requestHeaderValue
     makeAPICall();
   }
 
@@ -67,6 +82,12 @@ function App() {
 
         requestBody={requestBody}
         handleBodyContent={handleBodyContent}
+
+        requestHeaderName={requestHeaderName}
+        handleHeaderName={handleHeaderName}
+
+        requestHeaderValue={requestHeaderValue}
+        handleHeaderValue={handleHeaderValue}
 
         sendRequest={sendRequest}
       />
