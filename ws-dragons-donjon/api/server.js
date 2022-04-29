@@ -25,8 +25,8 @@ app.get('/', (req, res) => {
     })
 })
 
-app.get('/inscription', (req, res) => {
-  let url = 'http://141.95.153.155/inscription';
+app.get('/:route', (req, res) => {
+  let url = `http://141.95.153.155/${req.params.route}`;
   axios.get(url)
     .then(function (response) {
       console.log(response.data);
@@ -34,59 +34,6 @@ app.get('/inscription', (req, res) => {
     })
     .catch(function (error) {
       console.log(error);
-      res.send(error);
-    })
-})
-
-app.get('/reset', (req, res) => {
-  let url = 'http://141.95.153.155/reset';
-  axios.get(url)
-    .then(function (response) {
-      console.log(response.data);
-      res.send(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-      res.send(error);
-    })
-})
-
-app.get('/escalier', (req, res) => {
-  let url = 'http://141.95.153.155/escalier';
-  axios.get(url)
-    .then(function (response) {
-      console.log(response.data);
-      res.send(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-      res.send(error);
-    })
-})
-
-app.get('/coffre', (req, res) => {
-  let url = 'http://141.95.153.155/coffre';
-  axios.get(url)
-    .then(function (response) {
-      console.log(response.data);
-      res.send(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-      res.send(error);
-    })
-})
-
-app.get('/1', (req, res) => {
-  let url = 'http://141.95.153.155/1';
-  axios.get(url)
-    .then(function (response) {
-      console.log(response.data);
-      res.send(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-      res.send(error);
     })
 })
 
