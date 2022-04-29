@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Body from './components/Body';
 import Headers from './components/Headers';
 import Response from './components/Response';
 import SearchBar from './components/Searchbar';
-import Table from './components/Table';
 const axios = require('axios');
 
 function App() {
@@ -87,10 +85,6 @@ function App() {
     makeAPICall();
   }
 
-  const handleChangeContent = (event) => {
-      setBodyContent(event.target.value)
-  }
-
   const [params, setParams] = useState({})
   const [headers, setHeaders] = useState([{headerKey : 'test', headerValue: 'test2'}])
   const handleHeadersChange = e => {
@@ -102,7 +96,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>React Axios fecth</h1>
       <SearchBar
         requestURL={requestURL}
         handleURLChange={handleURLChange}
@@ -122,7 +115,6 @@ function App() {
         sendRequest={sendRequest}
       />
       <hr/>
-        <Table />
       <Response
         response={lastResponse}/>
         <hr/>

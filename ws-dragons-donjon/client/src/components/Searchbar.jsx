@@ -12,7 +12,7 @@ export default function SearchBar({
   requestHeaderName,
   handleHeaderName,
   requestHeaderValue,
-  handleHeaderValue
+  handleHeaderValue,
 }) {
   return (
     <>
@@ -37,8 +37,43 @@ export default function SearchBar({
         />
       </div>{" "}
       <div> {requestURL} </div>{" "}
-      <div> <textarea name="body" cols="40" rows="5" value={bodyContent} onChange={handleBodyContent}></textarea></div> {" "}
-      <div><input type="text" value={requestHeaderName} onChange={handleHeaderName} /><input type="text" value={requestHeaderValue} onChange={handleHeaderValue} /></div>{" "}
+      <div>
+        {" "}
+        <textarea
+          name="body"
+          cols="40"
+          rows="5"
+          value={bodyContent}
+          onChange={handleBodyContent}
+        ></textarea>
+        {bodyContent}
+      </div>{" "}
+      <div>
+        <table className="table-main">
+          <tr className="table-head">
+            <td>Key</td>
+            <td>Value</td>
+          </tr>
+          <tr>
+            <td>
+              {" "}
+              <input
+                type="text"
+                value={requestHeaderName}
+                onChange={handleHeaderName}
+              />
+            </td>
+            <td>
+              {" "}
+              <input
+                type="text"
+                value={requestHeaderValue}
+                onChange={handleHeaderValue}
+              />
+            </td>
+          </tr>
+        </table>
+      </div>{" "}
       <button onClick={sendRequest}>valider la requete </button>{" "}
     </>
   );
