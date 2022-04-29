@@ -42,6 +42,7 @@
     &-main {
         border-collapse: collapse;
         width: 100%;
+        margin-top: 20px;
 
         td {
             border: 1px solid black;
@@ -49,6 +50,8 @@
 
             input {
                 width: 95%;
+                height: 30px;
+                background-color: #b9b9b9;
             }
         }
     }
@@ -60,8 +63,27 @@
 }
 
 .textarea{
-    background-image: url(../img/brique.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
     width: 50%;
+    border-radius: 10px;
+    border: 2px solid white;
+    background-color: #b9b9b9;
+}
+.buttonvalider{
+    background-color: #F2F2F2;
+    height: 40px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #dedede;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &:hover{
+        background-color: hsl(0, 76%, 20%);
+        color: white;
+    }
+
+    &:active{
+background-color: hsl(0, 81%, 54%);
+    }
 }

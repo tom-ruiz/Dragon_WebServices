@@ -75,7 +75,7 @@ export default function SearchBar({
           </tr>
         </table>
       </div>{" "}
-      <button onClick={sendRequest}>valider la requete </button>{" "}
+      <button onClick={sendRequest} className="buttonvalider">valider la requete </button>{" "}
     </div>
   );
 }
