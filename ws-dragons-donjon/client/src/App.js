@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Table from './components/Table';
 import SearchBar from './components/Searchbar';
+import Response from './components/Response';
 const axios = require('axios');
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
     axios(baseConfig)
       .then((function (reponse) {
         console.log(reponse.data)
+        //envoyer les infos au composant "response.jsx"
       }))
   }
   useEffect(() => {
@@ -92,6 +94,7 @@ function App() {
         sendRequest={sendRequest}
       />
       <Table />
+      <Response/>
     </div>
   );
 }
