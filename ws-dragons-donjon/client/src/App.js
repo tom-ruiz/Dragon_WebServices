@@ -4,24 +4,26 @@ import Body from './components/Body';
 import Headers from './components/Headers';
 import Response from './components/Response';
 import SearchBar from './components/Searchbar';
+import Table from './components/Table';
 const axios = require('axios');
 
 function App() {
-  let url = 'http://localhost:8080/api';
+  const url = 'http://localhost:8080/';
   let baseConfig = {
     method: 'GET',
     headers: {
       "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Origin": "https://www.example.com",
-      "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
     },
     responseType: "json",
-    url: url
+    url: url,
+    body: ''
   };
   const makeAPICall = async () => {
     axios(baseConfig)
       .then((function (reponse) {
         console.log(reponse.data)
+        //envoyer les infos au composant "response.jsx"
       }))
   }
   useEffect(() => {
@@ -38,12 +40,40 @@ function App() {
   const handleRequestType = (event) => {
     setRequestType(event.target.value)
     console.log(event.target.value);
-}
-  const sendRequest = () => {
-    console.log('requete lancée')
   }
 
-  const [bodyContent, setBodyContent] = useState('')
+  const [requestBody, setBodyContent] = useState("");
+
+  const handleBodyContent = (event) => {
+    setBodyContent(event.target.value)
+    console.log(event.target.value);
+  }
+
+  const [requestHeaderName, setHeaderName] = useState("");
+
+  const handleHeaderName = (event) => {
+    setHeaderName(event.target.value)
+    console.log(event.target.value);
+  }
+
+  const [requestHeaderValue, setHeaderValue] = useState("");
+
+  const handleHeaderValue = (event) => {
+    setHeaderValue(event.target.value)
+    console.log(event.target.value);
+  }
+
+  const sendRequest = () => {
+    console.log('requete lancée');
+    baseConfig.method = requestType;
+    console.log(baseConfig.method);
+    baseConfig.url = requestURL;
+    console.log(baseConfig);
+    baseConfig.body = requestBody;
+    baseConfig.headers = baseConfig.headers + "," + requestHeaderName + " : " + requestHeaderValue
+    makeAPICall();
+  }
+
   const handleChangeContent = (event) => {
       setBodyContent(event.target.value)
   }
@@ -66,22 +96,24 @@ function App() {
 
         requestType={requestType}
         handleRequestType={handleRequestType}
+
+        requestBody={requestBody}
+        handleBodyContent={handleBodyContent}
+
+        requestHeaderName={requestHeaderName}
+        handleHeaderName={handleHeaderName}
+
+        requestHeaderValue={requestHeaderValue}
+        handleHeaderValue={handleHeaderValue}
+
         sendRequest={sendRequest}
       />
       <hr/>
-
-      <Body 
-        bodyContent={bodyContent}
-        handleChangeContent={handleChangeContent}
-        />
-      <Headers
-      headers={headers}
-      handleHeadersChange={handleHeadersChange}
-      />
-        <hr/>
+        <Table />
       <Response
         response={response}/>
         <hr/>
+
     </div>
   );
 }

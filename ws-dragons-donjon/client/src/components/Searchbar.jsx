@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
-export default function SearchBar({requestURL, handleURLChange, requestType, handleRequestType, sendRequest}) {    
+export default function SearchBar({requestURL, handleURLChange, requestType, handleRequestType, sendRequest, handleBodyContent, bodyContent, requestHeaderName, handleHeaderName, requestHeaderValue, handleHeaderValue}) {    
 
     return (
         <>
             <label for="pet-select">Type de requete:</label>
 
-            <select value={requestType} onChange={handleRequestType} name="requestType">
+            <select value={requestType} onChange={handleRequestType} defaultValue={'GET'} name="requestType">
                 <option value="GET">GET</option>
                 <option value="POST">POST</option>
                 <option value="PUT">PUT</option>
@@ -17,6 +17,8 @@ export default function SearchBar({requestURL, handleURLChange, requestType, han
             <div>
                 {requestURL}
             </div>
+            <textarea name="body" cols="40" rows="5" value={bodyContent} onChange={handleBodyContent}></textarea>
+            <input type="text" value={requestHeaderName} onChange={handleHeaderName} /><input type="text" value={requestHeaderValue} onChange={handleHeaderValue} />
             <button onClick={sendRequest} >
                 valider la requete
             </button>

@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
     })
     .catch(function (error) {
       console.log(error);
+      res.send(error);
     })
 })
 
@@ -33,6 +34,7 @@ app.get('/inscription', (req, res) => {
     })
     .catch(function (error) {
       console.log(error);
+      res.send(error);
     })
 })
 
@@ -45,6 +47,7 @@ app.get('/reset', (req, res) => {
     })
     .catch(function (error) {
       console.log(error);
+      res.send(error);
     })
 })
 
@@ -57,6 +60,7 @@ app.get('/escalier', (req, res) => {
     })
     .catch(function (error) {
       console.log(error);
+      res.send(error);
     })
 })
 
@@ -69,6 +73,7 @@ app.get('/coffre', (req, res) => {
     })
     .catch(function (error) {
       console.log(error);
+      res.send(error);
     })
 })
 
@@ -81,6 +86,7 @@ app.get('/1', (req, res) => {
     })
     .catch(function (error) {
       console.log(error);
+      res.send(error);
     })
 })
 
