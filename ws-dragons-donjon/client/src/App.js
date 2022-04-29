@@ -8,18 +8,21 @@ import Table from './components/Table';
 const axios = require('axios');
 
 function App() {
-  const url = 'http://localhost:8080';
+  let port = 8080
+  let url = `http://localhost:8080/`;
   let baseConfig = {
     method: 'GET',
     headers: {
       "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET,DELETE, OPTIONS",
     },
     responseType: "json",
     url: url,
-    body: ''
+    body: '',
+    port : port
   };
   const makeAPICall = async () => {
+    console.log(axios(baseConfig))
     axios(baseConfig)
       .then((function (reponse) {
         console.log("responseData",reponse.data)
@@ -68,6 +71,13 @@ function App() {
     console.log(event.target.value);
   }
 
+  const [requestHeaderPort, setHeaderPort] = useState("");
+
+  const handleHeaderPort = (event) => {
+    setHeaderPort(event.target.value)
+    console.log(event.target.value);
+  }
+
   const sendRequest = () => {
     console.log('requete lancée');
     if(requestType !== ""){
@@ -81,13 +91,17 @@ function App() {
     if(requestBody !== ""){
       baseConfig.body = requestBody;
     }
+    if(requestHeaderPort !== ""){
+      console.log(requestHeaderPort)
+      port = requestHeaderPort;
+    }
     if(requestHeaderName !== "" || requestHeaderValue !== "" ){
-      let newHeader = ` ${requestHeaderName} : ${requestHeaderValue} `;
-      console.log(newHeader)
-      baseConfig.headers = {
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-        // newHeader
+      if(requestHeaderName === "x-auth-token"){
+        baseConfig.headers = {
+          "Access-Control-Allow-Headers": "Content-Type",
+          "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+          "x-auth-token" : `${requestHeaderValue}`
+        }
       }
     }
     makeAPICall();
@@ -128,6 +142,9 @@ function App() {
 
         requestHeaderValue={requestHeaderValue}
         handleHeaderValue={handleHeaderValue}
+
+        requestHeaderPort={requestHeaderPort}
+        handleHeaderPort={handleHeaderPort}
 
         sendRequest={sendRequest}
       />

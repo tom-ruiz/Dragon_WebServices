@@ -1,6 +1,7 @@
 const express = require("express")
 const cors = require("cors")
 const { default: axios } = require("axios")
+const { response } = require("express")
 const app = express()
 
 app.use(cors())
@@ -26,7 +27,13 @@ app.get('/', (req, res) => {
 })
 
 app.get('/:route', (req, res) => {
-  let url = `http://141.95.153.155/${req.params.route}`;
+  console.log(req)
+  let url=''
+  if(req.port){
+    url = `http://141.95.153.155:${port}/${req.params.route}`;
+  }else{
+    url = `http://141.95.153.155/${req.params.route}`;
+  }
   axios.get(url)
     .then(function (response) {
       console.log(response.data);

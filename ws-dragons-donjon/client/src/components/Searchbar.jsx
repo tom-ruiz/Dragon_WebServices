@@ -12,7 +12,9 @@ export default function SearchBar({
   requestHeaderName,
   handleHeaderName,
   requestHeaderValue,
-  handleHeaderValue
+  handleHeaderValue,
+  handleHeaderPort,
+  requestHeaderPort
 }) {
   return (
     <>
@@ -35,8 +37,9 @@ export default function SearchBar({
           onChange={handleURLChange}
           className="input"
         />
+        <div>Spécifiez le port (8080 de base)<input type="text" value={requestHeaderPort} onChange={handleHeaderPort} /></div>{" "}
       </div>{" "}
-      <div> /{requestURL} </div>{" "}
+      <div> {requestHeaderPort}{requestURL} </div>{" "}
       <div> <textarea name="body" cols="40" rows="5" value={bodyContent} onChange={handleBodyContent}></textarea></div> {" "}
       <div><input type="text" value={requestHeaderName} onChange={handleHeaderName} /><input type="text" value={requestHeaderValue} onChange={handleHeaderValue} /></div>{" "}
       <button onClick={sendRequest}>valider la requete </button>{" "}
