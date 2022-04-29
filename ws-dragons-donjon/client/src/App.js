@@ -24,13 +24,12 @@ function App() {
       .then((function (reponse) {
         console.log("responseData",reponse.data)
         setLastResponse(reponse.data)
-        console.log("resp",lastResponse);
+        console.log("resp : ",lastResponse);
       }))
-      .then((reponse) => {
-        setLastResponse(reponse.data)
-        console.log("resp",lastResponse);
+      .catch(function (error) {
+        setLastResponse(error.message)
+        console.log("resp : ", lastResponse);
       })
-      
   }
   useEffect(() => {
     makeAPICall();
@@ -83,7 +82,13 @@ function App() {
       baseConfig.body = requestBody;
     }
     if(requestHeaderName !== "" || requestHeaderValue !== "" ){
-      baseConfig.headers = baseConfig.headers + "," + requestHeaderName + " : " + requestHeaderValue
+      let newHeader = ` ${requestHeaderName} : ${requestHeaderValue} `;
+      console.log(newHeader)
+      baseConfig.headers = {
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+        // newHeader
+      }
     }
     makeAPICall();
   }

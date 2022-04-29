@@ -36,7 +36,7 @@ export default function SearchBar({
           className="input"
         />
       </div>{" "}
-      <div> {requestURL} </div>{" "}
+      <div> /{requestURL} </div>{" "}
       <div> <textarea name="body" cols="40" rows="5" value={bodyContent} onChange={handleBodyContent}></textarea></div> {" "}
       <div><input type="text" value={requestHeaderName} onChange={handleHeaderName} /><input type="text" value={requestHeaderValue} onChange={handleHeaderValue} /></div>{" "}
       <button onClick={sendRequest}>valider la requete </button>{" "}
