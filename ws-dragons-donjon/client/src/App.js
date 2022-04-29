@@ -8,7 +8,7 @@ import Table from './components/Table';
 const axios = require('axios');
 
 function App() {
-  const url = 'http://localhost:8080';
+  const url = 'http://localhost';
   let baseConfig = {
     method: 'GET',
     headers: {
@@ -16,7 +16,6 @@ function App() {
       "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
     },
     responseType: "json",
-    url: url,
     body: '',
   };
   const makeAPICall = async () => {
