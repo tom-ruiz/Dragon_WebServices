@@ -7,12 +7,17 @@ export default function SearchBar({
   requestType,
   handleRequestType,
   sendRequest,
+  bodyContent,
+  handleBodyContent,
+  requestHeaderName,
+  handleHeaderName,
+  requestHeaderValue,
+  handleHeaderValue
 }) {
   return (
     <>
       <div className="searchbar">
         <label for="pet-select"> Type de requete: </label>
-
         <select
           value={requestType}
           onChange={handleRequestType}
@@ -24,7 +29,6 @@ export default function SearchBar({
           <option value="PUT"> PUT </option>{" "}
           <option value="DELETE"> DELETE </option>{" "}
         </select>
-
         <input
           type="text"
           value={requestURL}
@@ -33,6 +37,8 @@ export default function SearchBar({
         />
       </div>{" "}
       <div> {requestURL} </div>{" "}
+      <div> <textarea name="body" cols="40" rows="5" value={bodyContent} onChange={handleBodyContent}></textarea></div> {" "}
+      <div><input type="text" value={requestHeaderName} onChange={handleHeaderName} /><input type="text" value={requestHeaderValue} onChange={handleHeaderValue} /></div>{" "}
       <button onClick={sendRequest}>valider la requete </button>{" "}
     </>
   );
