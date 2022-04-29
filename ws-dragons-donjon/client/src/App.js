@@ -6,7 +6,7 @@ import SearchBar from './components/Searchbar';
 const axios = require('axios');
 
 function App() {
-  const url = 'http://localhost';
+  const url = 'http://localhost:8080';
   let baseConfig = {
     method: 'GET',
     headers: {
@@ -14,20 +14,20 @@ function App() {
       "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
     },
     responseType: "json",
-    body: '',
+    url: url,
+    body: ''
   };
   const makeAPICall = async () => {
     axios(baseConfig)
       .then((function (reponse) {
         console.log("responseData",reponse.data)
         setLastResponse(reponse.data)
-        console.log("resp",lastResponse);
+        console.log("resp : ",lastResponse);
       }))
-      .then((reponse) => {
-        setLastResponse(reponse.data)
-        console.log("resp",lastResponse);
+      .catch(function (error) {
+        setLastResponse(error.message)
+        console.log("resp : ", lastResponse);
       })
-      
   }
   useEffect(() => {
     makeAPICall();
@@ -80,7 +80,13 @@ function App() {
       baseConfig.body = requestBody;
     }
     if(requestHeaderName !== "" || requestHeaderValue !== "" ){
-      baseConfig.headers = baseConfig.headers + "," + requestHeaderName + " : " + requestHeaderValue
+      let newHeader = ` ${requestHeaderName} : ${requestHeaderValue} `;
+      console.log(newHeader)
+      baseConfig.headers = {
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+        // newHeader
+      }
     }
     makeAPICall();
   }
@@ -96,6 +102,11 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Bienvenue dans notre donjon !</h1>
+      <Response
+        response={lastResponse}/>
+      <div class="barre"></div>
+      <p>La barre ci-dessous vous permet de requêter l'api et explorer le donjon !</p>
       <SearchBar
         requestURL={requestURL}
         handleURLChange={handleURLChange}
