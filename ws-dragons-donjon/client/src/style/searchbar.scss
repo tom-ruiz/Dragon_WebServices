@@ -6,6 +6,10 @@
     flex-wrap: wrap;
 }
 
+.searchmain{
+    z-index: 1;
+}
+
 .select,
 .input {
 
@@ -51,6 +55,13 @@
 
     &-head {
         font-weight: bold;
-        background-color: #9cb3d6;
+        background-color: #a71d1d;
     }
+}
+
+.textarea{
+    background-image: url(../img/brique.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
 }

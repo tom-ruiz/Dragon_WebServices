@@ -102,7 +102,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Bienvenue dans notre donjon !</h1>
+      <h1 className='title'>Bienvenue dans notre donjon !</h1>
+      <div className='App-logo'></div>
       <Response
         response={lastResponse}/>
       <div class="barre"></div>

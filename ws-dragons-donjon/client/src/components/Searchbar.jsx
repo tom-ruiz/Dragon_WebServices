@@ -15,7 +15,7 @@ export default function SearchBar({
   handleHeaderValue,
 }) {
   return (
-    <>
+    <div className="searchmain">
       <div className="searchbar">
         <label for="pet-select"> Type de requete: </label>
         <select
@@ -45,6 +45,7 @@ export default function SearchBar({
           rows="5"
           value={bodyContent}
           onChange={handleBodyContent}
+          className="textarea"
         ></textarea>
         {bodyContent}
       </div>{" "}
@@ -75,6 +76,6 @@ export default function SearchBar({
         </table>
       </div>{" "}
       <button onClick={sendRequest}>valider la requete </button>{" "}
-    </>
+    </div>
   );
 }
