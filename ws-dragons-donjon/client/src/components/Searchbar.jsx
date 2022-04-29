@@ -17,7 +17,7 @@ export default function SearchBar({
   requestHeaderPort
 }) {
   return (
-    <>
+    <div className="searchmain">
       <div className="searchbar">
         <label for="pet-select"> Type de requete: </label>
         <select
@@ -39,10 +39,46 @@ export default function SearchBar({
         />
         <div>Spécifiez le port (8080 de base)<input type="text" value={requestHeaderPort} onChange={handleHeaderPort} /></div>{" "}
       </div>{" "}
-      <div> {requestHeaderPort}{requestURL} </div>{" "}
-      <div> <textarea name="body" cols="40" rows="5" value={bodyContent} onChange={handleBodyContent}></textarea></div> {" "}
-      <div><input type="text" value={requestHeaderName} onChange={handleHeaderName} /><input type="text" value={requestHeaderValue} onChange={handleHeaderValue} /></div>{" "}
-      <button onClick={sendRequest}>valider la requete </button>{" "}
-    </>
+      <div> {requestURL} </div>{" "}
+      <div>
+        {" "}
+        <textarea
+          name="body"
+          cols="40"
+          rows="5"
+          value={bodyContent}
+          onChange={handleBodyContent}
+          className="textarea"
+        ></textarea>
+        {bodyContent}
+      </div>{" "}
+      <div>
+        <table className="table-main">
+          <tr className="table-head">
+            <td>Key</td>
+            <td>Value</td>
+          </tr>
+          <tr>
+            <td>
+              {" "}
+              <input
+                type="text"
+                value={requestHeaderName}
+                onChange={handleHeaderName}
+              />
+            </td>
+            <td>
+              {" "}
+              <input
+                type="text"
+                value={requestHeaderValue}
+                onChange={handleHeaderValue}
+              />
+            </td>
+          </tr>
+        </table>
+      </div>{" "}
+      <button onClick={sendRequest} className="buttonvalider">valider la requete </button>{" "}
+    </div>
   );
 }
