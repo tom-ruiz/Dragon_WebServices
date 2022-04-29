@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Body from './components/Body';
+import Headers from './components/Headers';
 import Response from './components/Response';
 import SearchBar from './components/Searchbar';
 const axios = require('axios');
@@ -47,6 +48,13 @@ function App() {
       setBodyContent(event.target.value)
   }
 
+  const [params, setParams] = useState({})
+  const [headers, setHeaders] = useState([{headerKey : 'test', headerValue: 'test2'}])
+  const handleHeadersChange = e => {
+    // let newArr = [...headers]
+    // newArr[index] = e.target.value
+    // setHeaders(newArr)
+  }
   const [response, setResponse] = useState("")
 
   return (
@@ -60,13 +68,20 @@ function App() {
         handleRequestType={handleRequestType}
         sendRequest={sendRequest}
       />
-      {requestURL}
+      <hr/>
+
       <Body 
         bodyContent={bodyContent}
         handleChangeContent={handleChangeContent}
+        />
+      <Headers
+      headers={headers}
+      handleHeadersChange={handleHeadersChange}
       />
+        <hr/>
       <Response
         response={response}/>
+        <hr/>
     </div>
   );
 }
