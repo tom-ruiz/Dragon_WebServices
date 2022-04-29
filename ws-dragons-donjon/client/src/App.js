@@ -22,9 +22,15 @@ function App() {
   const makeAPICall = async () => {
     axios(baseConfig)
       .then((function (reponse) {
-        console.log(reponse.data)
-        //envoyer les infos au composant "response.jsx"
+        console.log("responseData",reponse.data)
+        setLastResponse(reponse.data)
+        console.log("resp",lastResponse);
       }))
+      .then((reponse) => {
+        setLastResponse(reponse.data)
+        console.log("resp",lastResponse);
+      })
+      
   }
   useEffect(() => {
     makeAPICall();
@@ -93,7 +99,7 @@ function App() {
     // newArr[index] = e.target.value
     // setHeaders(newArr)
   }
-  const [response, setResponse] = useState("")
+  const [lastResponse, setLastResponse] = useState("1")
 
   return (
     <div className="App">
@@ -119,7 +125,7 @@ function App() {
       <hr/>
         <Table />
       <Response
-        response={response}/>
+        response={lastResponse}/>
         <hr/>
 
     </div>
