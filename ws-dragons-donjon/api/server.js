@@ -27,9 +27,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/:route', (req, res) => {
-  console.log(req)
-  let url=''
-  if(req.port){
+  console.log(req);
+  let url='';
+  let port = req.headers.port;
+  console.log(port);
+  if(req.headers.port){
     url = `http://141.95.153.155:${port}/${req.params.route}`;
   }else{
     url = `http://141.95.153.155/${req.params.route}`;

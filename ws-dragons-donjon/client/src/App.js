@@ -11,13 +11,13 @@ function App() {
   let baseConfig = {
     method: 'GET',
     headers: {
+      "port" : port,
       "Access-Control-Allow-Headers": "Content-Type",
       "Access-Control-Allow-Methods": "OPTIONS,POST,GET,DELETE, OPTIONS",
     },
     responseType: "json",
     url: url,
     body: '',
-    port : port
   };
   const makeAPICall = async () => {
     console.log(axios(baseConfig))
@@ -26,6 +26,7 @@ function App() {
         console.log("responseData",reponse.data)
         setLastResponse(reponse.data)
         console.log("resp : ",lastResponse);
+        console.log(baseConfig.headers)
       }))
       .catch(function (error) {
         setLastResponse(error.message)
@@ -78,6 +79,10 @@ function App() {
 
   const sendRequest = () => {
     console.log('requete lancée');
+    if(requestHeaderPort !== ""){
+      console.log(requestHeaderPort)
+      port = requestHeaderPort;
+    }
     if(requestType !== ""){
       baseConfig.method = requestType;
     }
@@ -89,13 +94,10 @@ function App() {
     if(requestBody !== ""){
       baseConfig.body = requestBody;
     }
-    if(requestHeaderPort !== ""){
-      console.log(requestHeaderPort)
-      port = requestHeaderPort;
-    }
     if(requestHeaderName !== "" || requestHeaderValue !== "" ){
       if(requestHeaderName === "x-auth-token"){
         baseConfig.headers = {
+          "port" : port,
           "Access-Control-Allow-Headers": "Content-Type",
           "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
           "x-auth-token" : `${requestHeaderValue}`
@@ -144,9 +146,6 @@ function App() {
         sendRequest={sendRequest}
       />
       <hr/>
-      <Response
-        response={lastResponse}/>
-        <hr/>
 
     </div>
   );

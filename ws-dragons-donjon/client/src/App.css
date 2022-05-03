@@ -27,3 +27,12 @@
   z-index: 1;
   position: absolute;
 }
+
+.reponse{
+  width: 80%;
+  border-radius: 15px;
+  background-color: lightgray;
+  color: black;
+  margin: auto;
+  overflow: scroll;
+}

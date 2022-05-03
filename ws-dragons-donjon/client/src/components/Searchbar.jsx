@@ -30,6 +30,7 @@ export default function SearchBar({
           <option value="POST"> POST </option>{" "}
           <option value="PUT"> PUT </option>{" "}
           <option value="DELETE"> DELETE </option>{" "}
+          <option value="OPTIONS"> OPTIONS </option>{" "}
         </select>
         <input
           type="text"

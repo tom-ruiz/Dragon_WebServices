@@ -5,7 +5,7 @@ export default function Response({ response }) {
         if (response.presentation && response.carte) {
             for (var [cle, valeur] of Object.entries(response)) {
                 return (
-                    <>
+                    <div className="reponse">
                         <div>Voici la réponse généré par votre requête :</div><div>
                             <pre>
                                 {JSON.stringify(response.presentation, null, 2)}
@@ -21,19 +21,19 @@ export default function Response({ response }) {
                         </div>
                         <div>Une erreur ? Tu vois bien le code de retour non? Il doit bien y avoir un autre message quelque part...</div>
 
-                    </>
+                    </div>
                 )
             }
         } else {
             return (
-                <>
+                < div className="reponse">
                     <div>Voici la réponse généré par votre requête :</div><div>
                         <pre>
                             {JSON.stringify(response, null, 2)}
                         </pre>
                     </div>
                     <div>Une erreur ? Tu vois bien le code de retour non? Il doit bien y avoir un autre message quelque part...</div>
-                </>
+                </div>
             )
         }
     }
